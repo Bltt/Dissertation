@@ -1,5 +1,6 @@
 <div id="container">
     <div id="body">
-        <p>im a paragraph lol</p>
+        <p>you wanted pics well no i aint done that yet</p>
+
     </div>
 </div>
