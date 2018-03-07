@@ -9,7 +9,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | URL to your CodeIgniter root. Typically this will be your base URL,
 | WITH a trailing slash:
 |
-|	http://example.com/
+|	http://users.aber.ac.uk/mal52/diss/
 |
 | WARNING: You MUST set this value!
 |
@@ -223,7 +223,7 @@ $config['allow_get_array'] = TRUE;
 | your log files will fill up very fast.
 |
 */
-$config['log_threshold'] = 0;
+$config['log_threshold'] = 3;
 
 /*
 |--------------------------------------------------------------------------
