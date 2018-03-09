@@ -75,10 +75,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'db.dcs.aber.ac.uk',
-	'username' => 'mal52',
+	'hostname' => 'localhost',
+	'username' => 'root',
 	'password' => 'Aircadets182',
-	'database' => 'mal52',
+	'database' => 'website',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

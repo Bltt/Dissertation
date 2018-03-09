@@ -1,7 +1,15 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Pages extends CI_Controller {
+class Pages extends CI_Controller 
+{
+	public function __construct()
+    {
+        parent::__construct();
+        $this->load->model('db_model');
+
+    }
+	
 	public function view($page = 'home')
 	{
         if ( ! file_exists(APPPATH.'views/pages/public/'.$page.'.php'))
@@ -10,11 +18,32 @@ class Pages extends CI_Controller {
                 show_404();
         }
 
-        $data['title'] = ucfirst($page); // Capitalize the first letter
+        $this->load->view('templates/public/header');
+        $this->load->view('pages/public/'.$page);
+        $this->load->view('templates/public/footer');
+	}
+	
+	public function leave()
+	{
+		$this->load->helper('form');
+		$this->load->library('form_validation');
 
-        $this->load->view('templates/public/header', $data);
-        $this->load->view('pages/public/'.$page, $data);
-        $this->load->view('templates/public/footer', $data);
+		$this->form_validation->set_rules('name', 'Name', 'required');
+		$this->form_validation->set_rules('reason', 'Reason', 'required');
+		
+		if ($this->form_validation->run() === FALSE)
+		{
+			$this->load->view('templates/public/header');
+			$this->load->view('pages/public/leave');
+			$this->load->view('templates/public/footer');
+		}
+		else
+		{
+			$this->db_model->set_leave();
+			$this->load->view('templates/public/header');
+			$this->load->view('pages/public/success');
+			$this->load->view('templates/public/footer');
+		}
 	}
 }
 ?>
