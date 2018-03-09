@@ -45,7 +45,7 @@
             </ul>
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link disabled" href="">Submit Leave</a>
+                    <a class="nav-item nav-link" href="leave">Submit Leave</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link disabled" href="">Login</a>

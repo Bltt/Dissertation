@@ -13,7 +13,7 @@
 <div id="app" class="container">
     <nav class="navbar navbar-expand-lg navbar-light bg-faded">
         <a class="navbar-brand" href="">
-		 <img src="assets/images/crest_35h.png" width="29" height="35" class="d-inline-block align-top" alt="">
+		 <img src="<?php echo base_url("assets/images/crest_35h.png"); ?>" width=29" height="35" class="d-inline-block align-top" alt="">
 		561 Squadron <small>Administration Area</small></a>
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">

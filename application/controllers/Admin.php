@@ -10,7 +10,7 @@ class Admin extends CI_Controller {
 	}
 	
 	public function view($page = 'dash')
-	{
+	{		
         if ( ! file_exists(APPPATH.'views/pages/private/'.$page.'.php'))
         {
                 // Whoops, we don't have a page for that!
@@ -20,11 +20,16 @@ class Admin extends CI_Controller {
 		if($page == 'loa')
 		{
 			$data['db'] = $this->db_model->get_loa();
+			$this->load->view('templates/private/header');
+			$this->load->view('pages/private/loa', $data);
+			$this->load->view('templates/private/footer');
+		} 
+		else
+		{
+			$this->load->view('templates/private/header', $data);
+			$this->load->view('pages/private/'.$page);
+			$this->load->view('templates/private/footer');
 		}
-		
-        $this->load->view('templates/private/header');
-        $this->load->view('pages/private/'.$page, $data);
-        $this->load->view('templates/private/footer');
 	}
 }
 ?>
