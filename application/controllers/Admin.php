@@ -7,6 +7,7 @@ class Admin extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('db_model');
+		$this->load->helper(array('form', 'url'));
 	}
 	
 	public function view($page = 'dash')
@@ -23,10 +24,10 @@ class Admin extends CI_Controller {
 			$this->load->view('templates/private/header');
 			$this->load->view('pages/private/loa', $data);
 			$this->load->view('templates/private/footer');
-		} 
+		}
 		else
 		{
-			$this->load->view('templates/private/header', $data);
+			$this->load->view('templates/private/header');
 			$this->load->view('pages/private/'.$page);
 			$this->load->view('templates/private/footer');
 		}
