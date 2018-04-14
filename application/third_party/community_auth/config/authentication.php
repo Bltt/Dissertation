@@ -28,7 +28,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 
 $config['levels_and_roles'] = [
-	'1' => 'customer',
+	'1' => 'staff',
+	'3' => 'editor',
 	'6' => 'manager',
 	'9' => 'admin'
 ];
@@ -42,7 +43,7 @@ $config['levels_and_roles'] = [
 */
 
 $config['groups'] = [
-	'employees' => 'manager,admin'
+	'employees' => 'staff,editor,manager,admin'
 ];
 
 /*

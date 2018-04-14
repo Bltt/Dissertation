@@ -17,19 +17,19 @@
 		561 Squadron <small>Administration Area</small></a>
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="dash">Dashboard</a>
+                    <a class="nav-link" href="/admin/dash">Dashboard</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-item nav-link" href="loa">LOA's</a>
+                    <a class="nav-item nav-link" href="/admin/loa">LOA's</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-item nav-link" href="progtracker">Progress Tracker</a>
+                    <a class="nav-item nav-link" href="/admin/progtracker">Progress Tracker</a>
                 </li>
 				<li>
-					<a class="nav-item nav-link" href="editsite">Edit Site</a>
+					<a class="nav-item nav-link" href="/admin/editsite">Edit Site</a>
 				</li>
 				<li>
-					<a class="nav-item nav-link" href="users">User Accounts</a>
+					<a class="nav-item nav-link" href="/admin/users">User Accounts</a>
 				</li>
             </ul>
             <ul class="navbar-nav">

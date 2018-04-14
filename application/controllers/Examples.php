@@ -192,10 +192,10 @@ class Examples extends MY_Controller
 	{
 		// Customize this array for your user
 		$user_data = [
-			'username'   => 'skunkbot',
-			'passwd'     => 'PepeLePew7',
-			'email'      => 'skunkbot@example.com',
-			'auth_level' => '1', // 9 if you want to login @ examples/index.
+			'username'   => 'admin',
+			'passwd'     => 'Password1',
+			'email'      => 'test@testworld.com',
+			'auth_level' => '9', // 9 if you want to login @ examples/index.
 		];
 
 		$this->is_logged_in();
