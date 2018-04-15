@@ -97,9 +97,7 @@ class Admin extends MY_Controller {
 				$this->load->view('templates/private/footer');
 			}
 			else
-			{
-				//$this->db_model->set_user();
-				
+			{				
 				$user_data= array(
 					'username' => $this->input->post('username'),
 					'email' => $this->input->post('email'),
@@ -119,6 +117,44 @@ class Admin extends MY_Controller {
 				$this->load->view('pages/private/users', $data);
 				if( $this->db->affected_rows() == 1 )
 				echo '<h1>Congratulations</h1>' . '<p>User ' . $user_data['username'] . ' was created.</p>';
+				$this->load->view('templates/private/footer');
+			}
+		}
+	}
+	
+	public function userdelete()
+	{
+		if( $this->require_min_level(6) )
+		{
+			$this->load->helper('form');
+			$this->load->helper('auth');
+			$this->load->library('form_validation');
+			
+			$this->form_validation->set_rules('username', 'Username', 'required');
+			
+			if ($this->form_validation->run() === FALSE)
+			{
+				$data['db'] = $this->db_model->get_users();
+				$this->load->view('templates/private/header');
+				$this->load->view('pages/private/users_delete', $data);
+				$this->load->view('templates/private/footer');	
+			}
+			else
+			{
+				$username = $this->input->post('username');
+				$sql = 'DELETE FROM users WHERE username='.$this->db->escape($username).';';
+				if ($this->db->simple_query($sql))
+				{
+					$result = "Success!";
+				}
+				else
+				{
+					$result = "Query failed!";
+				}
+				$data['db'] = $this->db_model->get_users();
+				$this->load->view('templates/private/header');
+				$this->load->view('pages/private/users_delete', $data);
+				echo $result;
 				$this->load->view('templates/private/footer');
 			}
 		}

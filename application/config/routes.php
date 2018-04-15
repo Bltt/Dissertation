@@ -54,6 +54,7 @@ $route['upload/upload'] = 'upload/upload';
 $route['upload/(:any)'] = 'admin/view/$1';
 $route['admin/logout'] = 'admin/logout';
 $route['admin/users'] = 'admin/users';
+$route['admin/userdelete'] = 'admin/userdelete';
 $route['admin/(:any)'] = 'admin/view/$1';
 $route['admin'] = 'admin/view/dash';
 $route[LOGIN_PAGE] = 'pages/login';

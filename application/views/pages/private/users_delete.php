@@ -1,10 +1,12 @@
+<?php echo validation_errors(); ?>
+
 <div class="container">
     <h1>User Accounts</h1>
 </div>
 <div class="container">
 	<div class="row">
 		<div class="col-lg-10">      
-		<table class="table table-hover">
+		  <table class="table table-hover">
 			<thead>
 			<tr>
 				<th>Name</th>
@@ -25,7 +27,7 @@
 				</td>
 			</tr>
 			<?php endforeach; ?>
-		</table>	
+		  </table>
 		</div>	
 		<div class="col-lg-2">
 		<a href="/admin/userdelete" class="btn btn-danger" role="button">Delete Account</a>
@@ -35,6 +37,23 @@
 		<p>	6 - Manager</p>
 		<p>	8 - OC</p>
 		<p>	9 - Admin</p>
-		</div>
+		</div>	
     </div>
-	<h3>Create User</h3>
+	<div class="row">
+		<div class="col-lg-10">
+		<?php echo form_open('admin/userdelete'); ?>
+		  <form class="form-horizontal" action="#">
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="username">Username:</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" name="username" placeholder="Enter username">
+				</div>
+			</div>
+			<div class="form-group"> 
+				<div class="col-sm-offset-2 col-sm-10">
+					<button type="submit" class="btn btn-default">Delete</button>
+				</div>
+			</div>
+		  </form>	
+		</div>
+	</div>
