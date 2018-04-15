@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Admin extends CI_Controller {
+class Admin extends MY_Controller {
 	
 	public function __construct()
 	{
@@ -12,25 +12,38 @@ class Admin extends CI_Controller {
 	
 	public function view($page = 'dash')
 	{		
-        if ( ! file_exists(APPPATH.'views/pages/private/'.$page.'.php'))
-        {
-                // Whoops, we don't have a page for that!
-                show_404();
-        }
+		if( $this->require_min_level(1) )
+		{
+			if ( ! file_exists(APPPATH.'views/pages/private/'.$page.'.php'))
+			{
+					// Whoops, we don't have a page for that!
+					show_404();
+			}
 		
-		if($page == 'loa')
-		{
-			$data['db'] = $this->db_model->get_loa();
-			$this->load->view('templates/private/header');
-			$this->load->view('pages/private/loa', $data);
-			$this->load->view('templates/private/footer');
+			if($page == 'loa')
+			{
+				$data['db'] = $this->db_model->get_loa();
+				$this->load->view('templates/private/header');
+				$this->load->view('pages/private/loa', $data);
+				$this->load->view('templates/private/footer');
+			}
+			else
+			{
+				$this->load->view('templates/private/header');
+				$this->load->view('pages/private/'.$page);
+				$this->load->view('templates/private/footer');
+			}
 		}
-		else
-		{
-			$this->load->view('templates/private/header');
-			$this->load->view('pages/private/'.$page);
-			$this->load->view('templates/private/footer');
-		}
+	}
+	
+	public function logout()
+	{
+		$this->authentication->logout();
+
+		// Set redirect protocol
+		$redirect_protocol = USE_SSL ? 'https' : NULL;
+
+		redirect( site_url( LOGIN_PAGE . '?' . AUTH_LOGOUT_PARAM . '=1', $redirect_protocol ) );
 	}
 }
 ?>

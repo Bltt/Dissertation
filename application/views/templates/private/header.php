@@ -34,7 +34,7 @@
             </ul>
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link disabled" href="">Logout</a>
+                    <a class="nav-item nav-link" href="/admin/logout">Logout</a>
                 </li>
             </ul>
     </nav>

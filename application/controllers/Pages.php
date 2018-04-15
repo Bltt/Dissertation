@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Pages extends CI_Controller 
+class Pages extends MY_Controller 
 {
 	public function __construct()
     {
@@ -21,6 +21,24 @@ class Pages extends CI_Controller
         $this->load->view('templates/public/header');
         $this->load->view('pages/public/'.$page);
         $this->load->view('templates/public/footer');
+	}
+	
+	public function login()
+	{
+		// Method should not be directly accessible
+		if( $this->uri->uri_string() == 'pages/login')
+			show_404();
+
+		if( strtolower( $_SERVER['REQUEST_METHOD'] ) == 'post' )
+			$this->require_min_level(1);
+
+		$this->setup_login_form();
+
+		$html = $this->load->view('pages/login/header', '', TRUE);
+		$html .= $this->load->view('pages/login/login_form', '', TRUE);
+		$html .= $this->load->view('pages/login/footer', '', TRUE);
+
+		echo $html;
 	}
 	
 	public function leave()
