@@ -29,6 +29,11 @@ class Db_model extends CI_Model {
 		return $this->db->insert('loa', $data);
 	}
 	
+	public function get_users()
+	{
+		$query = $this->db->get('users');
+		return $query->result_array();
+	}
 	
 }
 ?>

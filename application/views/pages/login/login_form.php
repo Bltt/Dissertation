@@ -25,10 +25,10 @@ if( ! isset( $on_hold_message ) )
 		echo '
 			<div style="border:1px solid red;">
 				<p>
-					Login Error #' . $this->authentication->login_errors_count . '/' . config_item('max_allowed_attempts') . ': Invalid Username, Email Address, or Password.
+					Login Error #' . $this->authentication->login_errors_count . '/' . config_item('max_allowed_attempts') . ': Invalid Username or Password.
 				</p>
 				<p>
-					Username, email address and password are all case sensitive.
+					Username and password are all case sensitive.
 				</p>
 			</div>
 		';
@@ -50,7 +50,7 @@ if( ! isset( $on_hold_message ) )
 
 	<div>
 
-		<label for="login_string" class="form_label">Username or Email</label>
+		<label for="login_string" class="form_label">Username</label>
 		<input type="text" name="login_string" id="login_string" class="form_input" autocomplete="off" maxlength="255" />
 
 		<br />
