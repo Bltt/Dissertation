@@ -30,7 +30,7 @@
 		  </table>
 		</div>	
 		<div class="col-lg-2">
-		<a href="/admin/userdelete" class="btn btn-danger" role="button">Delete Account</a>
+		<a href="/admin/users" class="btn btn-danger" role="button">Back</a>
 		<h3>Access Levels</h3>
 		<p> 1 - Staff</p>
 		<p>	3 - Editor</p>

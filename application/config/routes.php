@@ -52,6 +52,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'pages/view';
 $route['upload/upload'] = 'upload/upload';
 $route['upload/(:any)'] = 'admin/view/$1';
+$route['admin/editsite'] = 'admin/editsite';
 $route['admin/logout'] = 'admin/logout';
 $route['admin/users'] = 'admin/users';
 $route['admin/userdelete'] = 'admin/userdelete';

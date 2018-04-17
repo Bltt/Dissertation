@@ -1,22 +1,20 @@
 <?php echo validation_errors(); ?>
 
 
-<?php echo form_open('admin/editsite'); ?>
+<?php echo form_open('admin/editpage'); ?>
 
 <div id="container">
     <h1>Edit Site</h1>
-	<h3>Choose a page to edit</h3>
+	<h3>Edit Page</h3>
 	<form class="form-horizontal" action="#">
 		<div class="form-group">
-		<label class="control-label col-sm-2" for="page">Page:</label>
+		<label class="control-label col-sm-2" for="page">Content:</label>
 			<div class="col-sm-10">
-				<select class="form-control" name="page">
-				<?php foreach ($db as $pages): ?>
-					<option>
-					<?php echo $pages['PageName']; ?>
-					</option>
-				<?php endforeach; ?>
-				</select>
+				<textarea class="form-control" id="contenteditor" rows="5">
+				
+					<?php echo $content; ?>
+					
+				</textarea>
 			</div>	
 		</div>
 		<div class="form-group"> 

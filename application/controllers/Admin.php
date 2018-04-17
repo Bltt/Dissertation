@@ -82,7 +82,7 @@ class Admin extends MY_Controller {
 			[
 				'field' => 'auth_level',
 				'label' => 'auth_level',
-				'rules' => 'required|integer|in_list[1,3,6,8,9]'
+				'rules' => 'required|integer|in_list[1,3,6]'
 			]
 		];
 
@@ -113,6 +113,7 @@ class Admin extends MY_Controller {
 				$this->db->set($user_data)
 					->insert(db_table('user_table'));
 			
+				$data['db'] = $this->db_model->get_users();
 				$this->load->view('templates/private/header');
 				$this->load->view('pages/private/users', $data);
 				if( $this->db->affected_rows() == 1 )
@@ -143,14 +144,22 @@ class Admin extends MY_Controller {
 			{
 				$username = $this->input->post('username');
 				$sql = 'DELETE FROM users WHERE username='.$this->db->escape($username).';';
-				if ($this->db->simple_query($sql))
+				if(($username != 'admin') && ($username != 'oc'))
 				{
-					$result = "Success!";
+					if ($this->db->simple_query($sql)) 
+					{
+						$result = "Success!";
+					}
+					else
+					{
+					$result = "Query failed!";
+					}
 				}
 				else
 				{
-					$result = "Query failed!";
+					$result = "OC or admin cannot be deleted!";
 				}
+				$data['result'] = $result;
 				$data['db'] = $this->db_model->get_users();
 				$this->load->view('templates/private/header');
 				$this->load->view('pages/private/users_delete', $data);
@@ -159,8 +168,62 @@ class Admin extends MY_Controller {
 			}
 		}
 	}
-
 	
+	public function editsite()
+	{
+		if( $this->require_min_level(6) )
+		{
+			$this->load->helper('form');
+			$this->load->library('form_validation');
+			
+			$data['db'] = $this->db_model->get_siteoptions();
+			
+			$this->form_validation->set_rules('page', 'Page', 'required');
+				
+			if ($this->form_validation->run() === FALSE)
+			{
+				$data['db'] = $this->db_model->get_siteoptions();
+				$this->load->view('templates/private/header');
+				$this->load->view('pages/private/editsite', $data);
+				$this->load->view('templates/private/footer');
+			}
+			else
+			{
+				$name = $this->input->post('page');
+				$sql = 'SELECT Content FROM pages WHERE PageName='.$this->db->escape($name).';';
+				$query = $this->db->query($sql);
+				$row = $query->row();
+				$data['content'] = $row->Content;
+				
+				$this->load->view('templates/private/header');
+				$this->load->view('pages/private/editpage', $data);
+				$this->load->view('templates/private/footer');
+			}
+		}
+	}
+	
+	public function editpage()
+	{
+		$this->load->helper('form');
+		$this->load->library('form_validation');
+		
+		if($this->form_validation->run() === FALSE)
+		{
+			$name = $this->input->post('page');
+			$sql = 'SELECT Content FROM pages WHERE PageName='.$this->db->escape($name).';';
+			$query = $this->db->query($sql);
+			$row = $query->row();
+			$data['content'] = $row->Content;
+				
+			$this->load->view('templates/private/header');
+			$this->load->view('pages/private/editpage', $data);
+			$this->load->view('templates/private/footer');
+		}
+		else
+		{
+			
+		}
+	}
 	
 	public function logout()
 	{

@@ -35,5 +35,20 @@ class Db_model extends CI_Model {
 		return $query->result_array();
 	}
 	
+	public function get_siteoptions()
+	{
+		$query = $this->db->get('pages');
+		return $query->result_array();
+	}
+	
+	public function get_pagecontent()
+	{
+		$page = $this->input->post('page');
+		$sql = 'SELECT Content FROM pages WHERE PageName='.$this->db->escape($page).';';
+		
+		$query = $this->db->query($sql);
+		return $query->result_array();
+	}
+	
 }
 ?>
