@@ -8,6 +8,15 @@ class Db_model extends CI_Model {
         $this->load->database();
     }
 	
+	public function get_content($name)
+	{
+		$sql = 'SELECT Content FROM pages WHERE PageName='.$this->db->escape($name).';';
+		$query = $this->db->query($sql);
+		$row = $query->row();
+		$content = $row->Content;
+		return $content;
+	}
+	
 	public function get_loa()
 	{
 		$query = $this->db->get('loa');

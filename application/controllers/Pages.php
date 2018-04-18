@@ -17,9 +17,9 @@ class Pages extends MY_Controller
                 // Whoops, we don't have a page for that!
                 show_404();
         }
-
+		$data['db'] = $this->db_model->get_content($page);
         $this->load->view('templates/public/header');
-        $this->load->view('pages/public/'.$page);
+        $this->load->view('pages/public/public', $data);
         $this->load->view('templates/public/footer');
 	}
 	
