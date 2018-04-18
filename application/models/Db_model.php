@@ -17,9 +17,21 @@ class Db_model extends CI_Model {
 		return $content;
 	}
 	
+	public function get_progress()
+	{
+		$query = $this->db->get('progress');
+		return $query->result_array();
+	}
+	
 	public function get_loa()
 	{
 		$query = $this->db->get_where('loa', 'archived = 0');
+		return $query->result_array();
+	}
+	
+	public function get_loa_archived()
+	{
+		$query = $this->db->get_where('loa', 'archived = 1');
 		return $query->result_array();
 	}
 	
