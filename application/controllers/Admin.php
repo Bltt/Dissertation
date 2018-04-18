@@ -168,7 +168,7 @@ class Admin extends MY_Controller {
 			}
 		}
 	}
-	
+
 	public function editsite()
 	{
 		if( $this->require_min_level(6) )
@@ -190,14 +190,8 @@ class Admin extends MY_Controller {
 			else
 			{
 				$name = $this->input->post('page');
-				$sql = 'SELECT Content FROM pages WHERE PageName='.$this->db->escape($name).';';
-				$query = $this->db->query($sql);
-				$row = $query->row();
-				$data['content'] = $row->Content;
-				
-				$this->load->view('templates/private/header');
-				$this->load->view('pages/private/editpage', $data);
-				$this->load->view('templates/private/footer');
+				$this->session->set_flashdata('name', $name);
+				redirect('/admin/editpage');
 			}
 		}
 	}
@@ -207,13 +201,22 @@ class Admin extends MY_Controller {
 		$this->load->helper('form');
 		$this->load->library('form_validation');
 		
+		$this->form_validation->set_rules('name', 'Name', 'required');
+		$this->form_validation->set_rules('contenteditor', 'ContentEditor', 'required');
+		
+		$name = $this->session->flashdata('name');
+		
+		$sql = 'SELECT Content FROM pages WHERE PageName='.$this->db->escape($name).';';
+		$query = $this->db->query($sql);
+		$row = $query->row();
+		$content = $row->Content;
+		
 		if($this->form_validation->run() === FALSE)
 		{
-			$name = $this->input->post('page');
-			$sql = 'SELECT Content FROM pages WHERE PageName='.$this->db->escape($name).';';
-			$query = $this->db->query($sql);
-			$row = $query->row();
-			$data['content'] = $row->Content;
+			$data['name'] = $name;
+			$data['content'] = $content;
+			
+			$this->session->set_flashdata('name', $name);
 				
 			$this->load->view('templates/private/header');
 			$this->load->view('pages/private/editpage', $data);
@@ -222,9 +225,28 @@ class Admin extends MY_Controller {
 		else
 		{
 			
+			$name = $this->input->post('name');
+			$content = $this->input->post('contenteditor');
+			$data['name'] = $name;
+			$data['content'] = $content;
+			
+			$sql = 'UPDATE pages SET Content='.$this->db->escape($content).' WHERE PageName='.$this->db->escape($name).';';
+			if ($this->db->simple_query($sql)) 
+			{
+				$result = "Success!";
+			}
+			else
+			{
+				$result = "Query failed!";
+			}
+			$data['result'] = $result;
+			$this->load->view('templates/private/header');
+			$this->load->view('pages/private/editpage', $data);
+			echo $result;
+			$this->load->view('templates/private/footer');
 		}
 	}
-	
+
 	public function logout()
 	{
 		$this->authentication->logout();

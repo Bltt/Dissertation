@@ -1,20 +1,25 @@
 <?php echo validation_errors(); ?>
 
 
-<?php echo form_open('admin/editpage'); ?>
-
 <div id="container">
     <h1>Edit Site</h1>
-	<h3>Edit Page</h3>
-	<form class="form-horizontal" action="#">
+	<h3>Edit Page - <?php echo $name;?></h3>
+	<?php echo form_open('admin/editpage');?>
+		<?php echo form_hidden('name', $name);?>
 		<div class="form-group">
 		<label class="control-label col-sm-2" for="page">Content:</label>
 			<div class="col-sm-10">
-				<textarea class="form-control" id="contenteditor" rows="5">
+				<?php 
+				$data = array(
+					'name'		=> 'contenteditor',
+					'id'		=> 'contenteditor',
+					'value'		=> $content,
+					'rows'		=> '5',
+					'cols'		=> '10',
+					'class'		=> 'form-control',
+				);
 				
-					<?php echo $content; ?>
-					
-				</textarea>
+				echo form_textarea($data); ?>
 			</div>	
 		</div>
 		<div class="form-group"> 
