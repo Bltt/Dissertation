@@ -24,7 +24,8 @@
 		</div>
 		<div class="form-group"> 
 			<div class="col-sm-offset-2 col-sm-10">
-				<button type="submit" class="btn btn-default">Submit</button>
+				<a href="/admin/editsite" class="btn btn-danger" role="button">Back</a>
+				<button type="submit" class="btn btn-primary float-right">Submit</button>
 			</div>
 		</div>
 	</form>

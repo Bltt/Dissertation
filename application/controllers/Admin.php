@@ -36,6 +36,40 @@ class Admin extends MY_Controller {
 		}
 	}
 	
+	public function loa()
+	{
+		$this->load->helper('form');
+		$this->load->library('form_validation');
+		
+		$this->form_validation->set_rules('ID', 'ID', 'required');
+		
+		if($this->form_validation->run() === FALSE)
+			{
+				$data['db'] = $this->db_model->get_loa();
+				$this->load->view('templates/private/header');
+				$this->load->view('pages/private/loa', $data);
+				$this->load->view('templates/private/footer');
+			}
+			else
+			{
+				$id = $this->input->post('ID');
+				$sql =  "UPDATE loa SET archived='1' WHERE ID=".$this->db->escape($id).";";
+				if ($this->db->simple_query($sql)) 
+				{
+					$result = "Success!";
+				}
+				else
+				{
+					$result = "Query failed!";
+				}
+				echo $result;
+				$data['db'] = $this->db_model->get_loa();
+				$this->load->view('templates/private/header');
+				$this->load->view('pages/private/loa', $data);
+				$this->load->view('templates/private/footer');
+			}
+	}
+	
 	public function users()
 	{
 		if( $this->require_min_level(6) )
@@ -246,7 +280,22 @@ class Admin extends MY_Controller {
 			$this->load->view('templates/private/footer');
 		}
 	}
-
+	
+/*	public function archiveloa()
+	{
+		$id = $this->input->post('ID');
+		$sql =  "UPDATE loa SET archived='1' WHERE ID=".$this->db->escape($id).";";
+		if ($this->db->simple_query($sql)) 
+			{
+				$result = "Success!";
+			}
+			else
+			{
+				$result = "Query failed!";
+			}
+		echo $result;
+	}
+*/
 	public function logout()
 	{
 		$this->authentication->logout();

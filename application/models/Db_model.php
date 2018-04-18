@@ -19,7 +19,7 @@ class Db_model extends CI_Model {
 	
 	public function get_loa()
 	{
-		$query = $this->db->get('loa');
+		$query = $this->db->get_where('loa', 'archived = 0');
 		return $query->result_array();
 	}
 	
