@@ -55,6 +55,7 @@ $route['upload/(:any)'] = 'admin/view/$1';
 $route['admin/editsite'] = 'admin/editsite';
 $route['admin/editpage'] = 'admin/editpage';
 $route['admin/loa'] = 'admin/loa';
+$route['admin/archivedloa'] = 'admin/archivedloa';
 $route['admin/logout'] = 'admin/logout';
 $route['admin/users'] = 'admin/users';
 $route['admin/userdelete'] = 'admin/userdelete';

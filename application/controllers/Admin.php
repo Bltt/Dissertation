@@ -70,6 +70,14 @@ class Admin extends MY_Controller {
 			}
 	}
 	
+	public function archivedloa()
+	{
+		$data['db'] = $this->db_model->get_loa_archived();
+		$this->load->view('templates/private/header');
+		$this->load->view('pages/private/archivedloa', $data);
+		$this->load->view('templates/private/footer');
+	}
+	
 	public function users()
 	{
 		if( $this->require_min_level(6) )
