@@ -2,31 +2,43 @@
     <h1>Progress Tracker</h1>
 </div>
 <div id="container">
-<div id="container">
     <table class="table table-hover">
 		<thead>
 		<tr>
+			<th>Rank</th>
 			<th>Name</th>
-			<th>Badge</th>
-			<th>Date Achieved</th>
-			<th>Actions</th>
+			<th>Classification</th>
+			<?php foreach ($db_badge as $badges): ?>
+				<th>
+				<?php echo $badges['Badge_Name'];?>
+				</th>
+			<?php endforeach; ?>
 		</tr>
 		</thead>
-		<?php foreach ($db as $tracker): ?>
+		<?php foreach ($db_cadets as $cadets): ?>
 		<tr>
 			<td>
-				<?php echo $tracker['name']; ?>
+				<?php echo $cadets['Rank'];?>
 			</td>
 			<td>
-				<?php echo $tracker['badge']; ?>
+				<?php echo $cadets['Name'];?>
 			</td>
 			<td>
-				<?php echo $tracker['level']; ?>
+				<?php echo $cadets['Classification'];?>
 			</td>
-			<td>
-				<?php echo $tracker['date']; ?>
-			</td>
-			<td>
-				<?php echo $tracker['reason']; ?>
-			</td>
+			<?php 
+				$sql = 'SELECT * FROM progress_achieved WHERE Name='.$this->db->escape($cadets['Name']).' ORDER BY Badge_Name;';
+				$query = $this->db->query($sql);
+				$result = $query->result_array();
+				foreach ($result as $badge_achieved):
+					echo '<td>';
+					echo $badge_achieved['Date'];
+					echo '<br>';
+					echo $badge_achieved['Level'];
+					echo '</td>';
+				endforeach;
+			?>
+		</tr>
+		<?php endforeach; ?>
+	</table>
 </div>

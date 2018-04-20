@@ -23,6 +23,25 @@ class Db_model extends CI_Model {
 		return $query->result_array();
 	}
 	
+	public function get_badges()
+	{
+		$sql = 'SELECT * FROM progress_badges ORDER BY Badge_Name;';
+		$query = $this->db->query($sql);
+		return $query->result_array();
+	}
+	
+	public function get_cadets()
+	{
+		$query = $this->db->get('progress_cadets');
+		return $query->result_array();
+	}
+	
+		public function get_achieved()
+	{
+		$query = $this->db->get('progress_achieved');
+		return $query->result_array();
+	}
+	
 	public function get_loa()
 	{
 		$query = $this->db->get_where('loa', 'archived = 0');
