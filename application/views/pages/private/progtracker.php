@@ -1,7 +1,7 @@
 <div class="container">
     <h1>Progress Tracker</h1>
 </div>
-<div id="container">
+<div id="container-fluid">
     <table class="table table-hover">
 		<thead>
 		<tr>

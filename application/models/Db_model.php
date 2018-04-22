@@ -30,6 +30,13 @@ class Db_model extends CI_Model {
 		return $query->result_array();
 	}
 	
+	public function get_cadet_specific($name)
+	{
+		$sql = 'SELECT * FROM progress_cadets WHERE Name='.$this->db->escape($name).';';
+		$query = $this->db->query($sql);
+		return $query->result_array();
+	}
+	
 	public function get_badges()
 	{
 		$sql = 'SELECT * FROM progress_badges ORDER BY Badge_ID;';
@@ -95,6 +102,33 @@ class Db_model extends CI_Model {
 		
 		$query = $this->db->query($sql);
 		return $query->result_array();
+	}
+	
+	public function edit_cadet()
+	{
+		$name = $this->input->post('name');
+		$data_cadets = array (
+			'Name'				=> $name,
+			'Rank' 				=> $this->input->post('rank'),
+			'Classification' 	=> $this->input->post('classification'),
+		);
+		$db_badge = $this->get_achieved_specific($name);
+		$i = 0;
+		foreach($db_badge as $badges):
+			$data_ach = array(
+				'Badge_ID' 		=> $i,
+				'Date'			=> $this->input->post('date_'.html_escape($i).''),
+				'Level'			=> $this->input->post('level_'.html_escape($i).''),
+				'Name'			=> $name,
+			);
+			$this->db->where('Name', $name);	
+			$this->db->where('Badge_ID', $i);	
+			$this->db->update('progress_achieved', $data_ach);
+			$i++;
+		endforeach;
+		
+		$this->db->where('Name', $data_cadets['Name']);
+		$this->db->update('progress_cadets', $data_cadets);
 	}
 	
 }

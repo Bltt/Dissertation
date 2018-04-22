@@ -288,22 +288,6 @@ class Admin extends MY_Controller {
 			$this->load->view('templates/private/footer');
 		}
 	}
-	
-/*	public function archiveloa()
-	{
-		$id = $this->input->post('ID');
-		$sql =  "UPDATE loa SET archived='1' WHERE ID=".$this->db->escape($id).";";
-		if ($this->db->simple_query($sql)) 
-			{
-				$result = "Success!";
-			}
-			else
-			{
-				$result = "Query failed!";
-			}
-		echo $result;
-	}
-*/
 
 	public function progtracker()
 	{
@@ -323,12 +307,63 @@ class Admin extends MY_Controller {
 			$data['db_badge'] = $this->db_model->get_badges();
 			$data['db_cadets'] = $this->db_model->get_cadets();
 			$data['db_achieved'] = $this->db_model->get_achieved();
+			
+			$this->load->helper('form');
+			$this->load->library('form_validation');
 		
-			$this->load->view('templates/private/header_big');
-			$this->load->view('pages/private/progtrack_edit', $data);
-			$this->load->view('templates/private/footer');
+			$this->form_validation->set_rules('Selector', 'Selector', 'required');
+			
+			if ($this->form_validation->run() === FALSE)
+			{
+				$this->load->view('templates/private/header_big');
+				$this->load->view('pages/private/progtrack_edit', $data);
+				$this->load->view('templates/private/footer');
+			}
+			else
+			{
+				$name = $this->input->post('Selector');
+				$this->session->set_flashdata('name', $name);
+				redirect('/admin/editcadet');
+			}
 		}
 	}
+	
+	public function editcadet()
+	{
+		if( $this->require_min_level(3) )
+		{
+			$this->load->helper('form');
+			$this->load->library('form_validation');
+			$name = $this->session->flashdata('name');
+			
+			$data['db_badge'] = $this->db_model->get_badges();
+			$data['db_achieved'] = $this->db_model->get_achieved_specific($name);
+			$data['db_cadet'] = $this->db_model->get_cadet_specific($name);
+		
+			$this->form_validation->set_rules('name', 'name', 'required');			
+			
+			if ($this->form_validation->run() === FALSE)
+			{
+				$this->session->set_flashdata('name', $name);
+				
+				$this->load->view('templates/private/header_big');
+				$this->load->view('pages/private/progtrack_editcadet', $data);
+				$this->load->view('templates/private/footer');
+			}
+			else
+			{
+				$this->db_model->edit_cadet();
+				
+				$data['db_badge'] = $this->db_model->get_badges();
+				$data['db_achieved'] = $this->db_model->get_achieved_specific($name);
+				$data['db_cadet'] = $this->db_model->get_cadet_specific($name);
+				$this->load->view('templates/private/header_big');
+				$this->load->view('pages/private/progtrack_editcadet', $data);
+				$this->load->view('templates/private/footer');
+			}
+		}
+	}
+	
 	
 	public function logout()
 	{

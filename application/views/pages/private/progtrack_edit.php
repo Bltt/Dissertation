@@ -1,5 +1,6 @@
 <div class="container">
     <h1>Progress Tracker</h1>
+	<h3>Select cadet to edit</h3>
 </div>
 <div id="container">
 <?php echo form_open('admin/progtrack_edit'); ?>
@@ -61,5 +62,6 @@
 	</table>
 </div>
 <div class="container">
-	<?php echo form_submit('Selector', 'Select');?>
+	<a href="/admin/progtracker" class="btn btn-primary" role="button">Back</a>
+	<button type="submit" class="btn btn-default">Submit</button>
 </div>
