@@ -2,9 +2,11 @@
     <h1>Progress Tracker</h1>
 </div>
 <div id="container">
+<?php echo form_open('admin/progtrack_edit'); ?>
     <table class="table table-hover">
 		<thead>
 		<tr>
+			<th>Select</th>
 			<th>Rank</th>
 			<th>Name</th>
 			<th>Classification</th>
@@ -17,6 +19,9 @@
 		</thead>
 		<?php foreach ($db_cadets as $cadets): ?>
 		<tr>
+			<td>
+				<?php echo form_radio('Selector',$cadets['Name']);?>
+			</td>
 			<td>
 				<?php echo $cadets['Rank'];?>
 			</td>
@@ -56,5 +61,5 @@
 	</table>
 </div>
 <div class="container">
-	<a href="/admin/progtrack_edit" class="btn btn-primary" role="button">Edit Mode</a>
+	<?php echo form_submit('Selector', 'Select');?>
 </div>

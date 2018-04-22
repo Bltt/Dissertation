@@ -23,9 +23,16 @@ class Db_model extends CI_Model {
 		return $query->result_array();
 	}
 	
+	public function get_achieved_specific($name)
+	{
+		$sql = 'SELECT * FROM progress_achieved WHERE Name='.$this->db->escape($name).' ORDER BY Badge_ID;';
+		$query = $this->db->query($sql);
+		return $query->result_array();
+	}
+	
 	public function get_badges()
 	{
-		$sql = 'SELECT * FROM progress_badges ORDER BY Badge_Name;';
+		$sql = 'SELECT * FROM progress_badges ORDER BY Badge_ID;';
 		$query = $this->db->query($sql);
 		return $query->result_array();
 	}

@@ -311,9 +311,23 @@ class Admin extends MY_Controller {
 		$data['db_cadets'] = $this->db_model->get_cadets();
 		$data['db_achieved'] = $this->db_model->get_achieved();
 		
-		$this->load->view('templates/private/header');
+		$this->load->view('templates/private/header_big');
 		$this->load->view('pages/private/progtracker', $data);
 		$this->load->view('templates/private/footer');
+	}
+	
+	public function progtrack_edit()
+	{
+		if( $this->require_min_level(3) )
+		{
+			$data['db_badge'] = $this->db_model->get_badges();
+			$data['db_cadets'] = $this->db_model->get_cadets();
+			$data['db_achieved'] = $this->db_model->get_achieved();
+		
+			$this->load->view('templates/private/header_big');
+			$this->load->view('pages/private/progtrack_edit', $data);
+			$this->load->view('templates/private/footer');
+		}
 	}
 	
 	public function logout()

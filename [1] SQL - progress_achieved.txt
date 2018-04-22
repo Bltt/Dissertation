@@ -1,0 +1,36 @@
+CREATE TABLE progress_achieved (
+    Badge_ID int,
+    Level varchar(30),
+    Date date,
+    Name varchar(50)
+);
+
+
+
+INSERT INTO progress_achieved VALUES ('1', 'Grey', '2018-04-22', 'Jones');
+INSERT INTO progress_achieved VALUES ('2', 'Grey', '2018-04-22', 'Jones');
+INSERT INTO progress_achieved VALUES ('3', 'Grey', '2018-04-22', 'Jones');
+INSERT INTO progress_achieved VALUES ('4', 'Grey', '2018-04-22', 'Jones');
+INSERT INTO progress_achieved VALUES ('5', 'Grey', '2018-04-22', 'Jones');
+INSERT INTO progress_achieved VALUES ('6', 'Grey', '2018-04-22', 'Jones');
+INSERT INTO progress_achieved VALUES ('7', 'Grey', '2018-04-22', 'Jones');
+INSERT INTO progress_achieved VALUES ('8', 'Grey', '2018-04-22', 'Jones');
+INSERT INTO progress_achieved VALUES ('9', 'Grey', '2018-04-22', 'Jones');
+INSERT INTO progress_achieved VALUES ('10', 'Grey', '2018-04-22', 'Jones');
+INSERT INTO progress_achieved VALUES ('11', 'Grey', '2018-04-22', 'Jones');
+INSERT INTO progress_achieved VALUES ('12', 'Grey', '2018-04-22', 'Jones');
+INSERT INTO progress_achieved VALUES ('13', 'Grey', '2018-04-22', 'Jones');
+
+INSERT INTO progress_achieved VALUES ('1', 'Grey', '2018-04-22', 'Person');
+INSERT INTO progress_achieved VALUES ('2', 'Grey', '2018-04-22', 'Person');
+INSERT INTO progress_achieved VALUES ('3', 'Grey', '2018-04-22', 'Person');
+INSERT INTO progress_achieved VALUES ('4', 'Grey', '2018-04-22', 'Person');
+INSERT INTO progress_achieved VALUES ('5', 'Grey', '2018-04-22', 'Person');
+INSERT INTO progress_achieved VALUES ('6', 'Grey', '2018-04-22', 'Person');
+INSERT INTO progress_achieved VALUES ('7', 'Grey', '2018-04-22', 'Person');
+INSERT INTO progress_achieved VALUES ('8', 'Grey', '2018-04-22', 'Person');
+INSERT INTO progress_achieved VALUES ('9', 'Grey', '2018-04-22', 'Person');
+INSERT INTO progress_achieved VALUES ('10', 'Grey', '2018-04-22', 'Person');
+INSERT INTO progress_achieved VALUES ('11', 'Grey', '2018-04-22', 'Person');
+INSERT INTO progress_achieved VALUES ('12', 'Grey', '2018-04-22', 'Person');
+INSERT INTO progress_achieved VALUES ('13', 'Grey', '2018-04-22', 'Person');

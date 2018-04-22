@@ -1,0 +1,38 @@
+trained shot
+marksman
+adv marksman
+comp marksman
+
+leadership
+
+gliding
+
+DofE
+
+musician
+
+first aid
+
+Road Marching
+
+Parachuting
+
+Comms
+Cyber
+
+INSERT INTO progress_badges VALUES ('Trained Shot', '1');
+INSERT INTO progress_badges VALUES ('Marksman', '2');
+INSERT INTO progress_badges VALUES ('Advanced Marksman', '3');
+INSERT INTO progress_badges VALUES ('Competition Marksman', '4');
+
+INSERT INTO progress_badges VALUES ('Leadership', '5');
+
+INSERT INTO progress_badges VALUES ('Gliding', '6');
+INSERT INTO progress_badges VALUES ('Flying', '7');
+
+INSERT INTO progress_badges VALUES ('DofE', '8');
+
+INSERT INTO progress_badges VALUES ('Music', '8');
+
+INSERT INTO progress_badges VALUES ('First Aid', '8');
+
