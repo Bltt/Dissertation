@@ -2,7 +2,7 @@
 
 <div class="container">
     <h1>User Accounts</h1>
-	<h3>Change Password</h3>
+	<h3>Delete User</h3>
 </div>
 <div class="container">
 	<div class="row">
@@ -42,7 +42,7 @@
     </div>
 	<div class="row">
 		<div class="col-lg-10">
-		<?php echo form_open('admin/userdelete'); ?>
+		<?php echo form_open('admin/userpass'); ?>
 		  <form class="form-horizontal" action="#">
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="username">Username:</label>
@@ -58,9 +58,15 @@
 					</select>
 				</div>
 			</div>
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="password">Password:</label>
+				<div class="col-sm-10"> 
+				<input type="password" class="form-control" name="password" placeholder="Enter password">
+				</div>
+			</div>
 			<div class="form-group"> 
 				<div class="col-sm-offset-2 col-sm-10">
-					<button type="submit" class="btn btn-default">Delete</button>
+					<button type="submit" class="btn btn-default">Change Pass</button>
 				</div>
 			</div>
 		  </form>	

@@ -28,6 +28,7 @@
 		</table>	
 		</div>	
 		<div class="col-lg-2">
+		<a href="/admin/userpass" class="btn btn-primary" role="button">Change Passwords</a>
 		<a href="/admin/userdelete" class="btn btn-danger" role="button">Delete Account</a>
 		<h3>Access Levels</h3>
 		<p> 1 - Staff</p>

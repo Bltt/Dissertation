@@ -150,8 +150,7 @@ class Admin extends MY_Controller {
 				$data['db'] = $this->db_model->get_users();
 				$this->load->view('templates/private/header');
 				$this->load->view('pages/private/users', $data);
-				if( $this->db->affected_rows() == 1 )
-				echo '<h1>Congratulations</h1>' . '<p>User ' . $user_data['username'] . ' was created.</p>';
+				$this->load->view('pages/private/users_form');
 				$this->load->view('templates/private/footer');
 			}
 		}
@@ -164,12 +163,14 @@ class Admin extends MY_Controller {
 			$this->load->helper('form');
 			$this->load->helper('auth');
 			$this->load->library('form_validation');
+			$result = '';
 			
 			$this->form_validation->set_rules('username', 'Username', 'required');
 			
 			if ($this->form_validation->run() === FALSE)
 			{
 				$data['db'] = $this->db_model->get_users();
+				$data['result'] = $result;
 				$this->load->view('templates/private/header');
 				$this->load->view('pages/private/users_delete', $data);
 				$this->load->view('templates/private/footer');	
@@ -182,27 +183,77 @@ class Admin extends MY_Controller {
 				{
 					if ($this->db->simple_query($sql)) 
 					{
-						$result = "Success!";
+						$result = '<div class="alert alert-success" role="alert">Success!</div>';
 					}
 					else
 					{
-					$result = "Query failed!";
+						$result = '<div class="alert alert-danger" role="alert">Query failed!</div>';
 					}
 				}
 				else
 				{
-					$result = "OC or admin cannot be deleted!";
+					$result = '<div class="alert alert-danger" role="alert">OC or admin cannot be changed!</div>';
 				}
 				$data['result'] = $result;
 				$data['db'] = $this->db_model->get_users();
 				$this->load->view('templates/private/header');
 				$this->load->view('pages/private/users_delete', $data);
-				echo $result;
 				$this->load->view('templates/private/footer');
 			}
 		}
 	}
-
+	
+	public function userpass()
+	{
+		if( $this->require_min_level(6) )
+		{
+			$this->load->helper('form');
+			$this->load->helper('auth');
+			$this->load->library('form_validation');
+			$result = '';
+			
+			$this->form_validation->set_rules('username', 'Username', 'required');
+			$this->form_validation->set_rules('password', 'Password', 'required');
+			
+			if ($this->form_validation->run() === FALSE)
+			{
+				$data['db'] = $this->db_model->get_users();
+				$data['result'] = $result;
+				$this->load->view('templates/private/header');
+				$this->load->view('pages/private/users_pass', $data);
+				$this->load->view('templates/private/footer');	
+			}
+			else
+			{
+				$username = $this->input->post('username');
+				$pass = $this->input->post('password');
+				$passwd = $this->authentication->hash_passwd($pass);
+				$sql = 'UPDATE users SET passwd='.$this->db->escape($passwd).' WHERE username='.$this->db->escape($username).';';
+				if(($username != 'admin') && ($username != 'oc'))
+				{
+					if ($this->db->simple_query($sql)) 
+					{
+						$result = '<div class="alert alert-success" role="alert">Success!</div>';
+					}
+					else
+					{
+						$result = '<div class="alert alert-danger" role="alert">Query failed!</div>';
+					}
+				}
+				else
+				{
+					$result = '<div class="alert alert-danger" role="alert">OC or admin cannot be changed!</div>';
+				}
+				$data['result'] = $result;
+				$data['db'] = $this->db_model->get_users();
+				$this->load->view('templates/private/header');
+				$this->load->view('pages/private/users_pass', $data);
+				$this->load->view('templates/private/footer');
+			
+			}
+		}
+	}
+	
 	public function editsite()
 	{
 		if( $this->require_min_level(6) )

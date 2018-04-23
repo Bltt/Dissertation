@@ -61,6 +61,7 @@ $route['admin/loa'] = 'admin/loa';
 $route['admin/archivedloa'] = 'admin/archivedloa';
 $route['admin/logout'] = 'admin/logout';
 $route['admin/users'] = 'admin/users';
+$route['admin/userpass'] = 'admin/userpass';
 $route['admin/userdelete'] = 'admin/userdelete';
 $route['admin/(:any)'] = 'admin/view/$1';
 $route['admin'] = 'admin/view/dash';
