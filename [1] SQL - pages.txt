@@ -1,0 +1,11 @@
+INSERT INTO pages VALUES ('about', 'about');
+INSERT INTO pages VALUES ('civcomm', 'about');
+INSERT INTO pages VALUES ('contact', 'about');
+INSERT INTO pages VALUES ('gallery', 'about');
+INSERT INTO pages VALUES ('giving', 'about');
+INSERT INTO pages VALUES ('home', 'about');
+INSERT INTO pages VALUES ('join', 'about');
+INSERT INTO pages VALUES ('public', 'about');
+INSERT INTO pages VALUES ('staffteam', 'about');
+INSERT INTO pages VALUES ('whatwedo', 'about');
+

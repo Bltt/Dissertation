@@ -1,0 +1,10 @@
+
+
+CREATE TABLE loa (
+    id int(10) NOT NULL AUTO_INCREMENT,
+    name varchar(50),
+    date date,
+    reason text,
+	archived bit,
+	PRIMARY KEY (id)
+);

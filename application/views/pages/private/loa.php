@@ -27,8 +27,8 @@
 				<?php echo $loa_item['reason']; ?>
 			</td>
 			<td>
-				<?php echo form_hidden('ID', $loa_item['ID']);?>
-				<button type="submit" id="ID" value="<?php echo $loa_item['ID'];?>" class="btn btn-danger">Archive</button>
+				<?php echo form_hidden('ID', $loa_item['id']);?>
+				<button type="submit" id="ID" value="<?php echo $loa_item['id'];?>" class="btn btn-danger">Archive</button>
 			</td>
 		</tr>
 		<?php endforeach; ?>

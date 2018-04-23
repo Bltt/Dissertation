@@ -70,12 +70,11 @@ class Db_model extends CI_Model {
 	
 	public function set_leave()
 	{
-		$date = date("Y-m-d H:i:s"); 
 		$arc = 0;
 		
 		$data= array(
 			'name' => $this->input->post('name'),
-			'date' => $date,
+			'date' => $this->input->post('date'),
 			'reason' => $this->input->post('reason'),
 			'archived' => $arc
 		);
@@ -131,5 +130,22 @@ class Db_model extends CI_Model {
 		$this->db->update('progress_cadets', $data_cadets);
 	}
 	
+	public function get_latest_loas()
+	{
+		$a = 0;
+		$sql = 'SELECT * FROM loa WHERE date='.$this->db->escape(date("Y-m-d")).' AND archived='.$this->db->escape($a).';';
+		
+		$query = $this->db->query($sql);
+		return $query->result_array();
+	}
+	
+	public function get_latest_badges()
+	{
+		/* $sql = 'SELECT * FROM progress_achieved WHERE PageName='.$this->db->escape($page).';';
+		
+		$query = $this->db->query($sql);
+		return $query->result_array();*/
+	}
+
 }
 ?>

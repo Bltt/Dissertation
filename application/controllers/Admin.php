@@ -19,20 +19,12 @@ class Admin extends MY_Controller {
 					// Whoops, we don't have a page for that!
 					show_404();
 			}
-		
-			if($page == 'loa')
-			{
-				$data['db'] = $this->db_model->get_loa();
-				$this->load->view('templates/private/header');
-				$this->load->view('pages/private/loa', $data);
-				$this->load->view('templates/private/footer');
-			}
-			else
-			{
-				$this->load->view('templates/private/header');
-				$this->load->view('pages/private/'.$page);
-				$this->load->view('templates/private/footer');
-			}
+			$data['loa'] = $this->db_model->get_latest_loas();
+			$data['badges_latest'] = $this->db_model->get_latest_badges();
+			
+			$this->load->view('templates/private/header');
+			$this->load->view('pages/private/'.$page, $data);
+			$this->load->view('templates/private/footer');
 		}
 	}
 	

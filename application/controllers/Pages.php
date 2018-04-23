@@ -17,10 +17,17 @@ class Pages extends MY_Controller
                 // Whoops, we don't have a page for that!
                 show_404();
         }
-		$data['db'] = $this->db_model->get_content($page);
-        $this->load->view('templates/public/header');
-        $this->load->view('pages/public/public', $data);
-        $this->load->view('templates/public/footer');
+		if ($page == 'leave' || $page == 'success')
+		{
+			$this->leave();
+		}
+		else
+		{
+			$data['db'] = $this->db_model->get_content($page);
+			$this->load->view('templates/public/header');
+			$this->load->view('pages/public/public', $data);
+			$this->load->view('templates/public/footer');
+		}
 	}
 	
 	public function login()
@@ -48,6 +55,7 @@ class Pages extends MY_Controller
 
 		$this->form_validation->set_rules('name', 'Name', 'required');
 		$this->form_validation->set_rules('reason', 'Reason', 'required');
+		$this->form_validation->set_rules('date', 'Date', 'required');
 		
 		if ($this->form_validation->run() === FALSE)
 		{
