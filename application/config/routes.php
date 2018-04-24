@@ -56,6 +56,7 @@ $route['admin/editsite'] = 'admin/editsite';
 $route['admin/editpage'] = 'admin/editpage';
 $route['admin/progtracker'] = 'admin/progtracker';
 $route['admin/progtrack_edit'] = 'admin/progtrack_edit';
+$route['admin/progcadetadd'] = 'admin/progcadetadd';
 $route['admin/editcadet'] = 'admin/editcadet';
 $route['admin/loa'] = 'admin/loa';
 $route['admin/archivedloa'] = 'admin/archivedloa';

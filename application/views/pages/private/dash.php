@@ -2,7 +2,7 @@
 <h1>Dashboard</h1>
     <div class="row">
 		<div class="col-6">
-		<h3>Latest LOA's</h3>
+		<h3>Today's LOA's</h3>
 		  <table class="table table-hover">
 			<thead>
 				<tr>

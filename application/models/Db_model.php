@@ -103,6 +103,30 @@ class Db_model extends CI_Model {
 		return $query->result_array();
 	}
 	
+	public function add_cadet($badges)
+	{
+		$name = $this->input->post('name');
+		$data = array (
+			'Name'				=> $name,
+			'Rank' 				=> $this->input->post('rank'),
+			'Classification' 	=> $this->input->post('classification'),
+		);
+		
+		$this->db->insert('progress_cadets', $data);
+		
+		$i = 1;
+		foreach($badges as $badge):
+			$data_ach = array(
+				'Badge_ID' 		=> $i,
+				'Date'			=> date("Y-m-d"),
+				'Level'			=> 'Grey',
+				'Name'			=> $name,
+			);
+			$this->db->insert('progress_achieved', $data_ach);
+			$i++;
+		endforeach;
+	}
+	
 	public function edit_cadet()
 	{
 		$name = $this->input->post('name');

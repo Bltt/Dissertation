@@ -63,5 +63,6 @@
 </div>
 <div class="container">
 	<a href="/admin/progtracker" class="btn btn-primary" role="button">Back</a>
+	<a href="/admin/progcadetadd" class="btn btn-secondary" role="button">Add Cadet</a>
 	<button type="submit" class="btn btn-default">Submit</button>
 </div>

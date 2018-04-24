@@ -1,0 +1,12 @@
+CREATE TABLE progress_cadets (
+    Name varchar(50),
+	Rank varchar(20),
+	Classification varchar(30),
+	Cadet_ID int NOT NULL AUTO_INCREMENT,
+	PRIMARY KEY (Cadet_ID)
+);
+
+
+
+INSERT INTO progress_cadets (Name, Rank, Classification)  VALUES ('Jones', 'FS', 'Master');
+INSERT INTO progress_cadets (Name, Rank, Classification)   VALUES ('Person', 'CPL', 'Leading');

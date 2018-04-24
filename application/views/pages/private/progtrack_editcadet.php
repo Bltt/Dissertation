@@ -28,10 +28,13 @@
 							'FS'		=> 'Flight Sergeant',
 							'CWO'		=> 'Cadet Warrant Officer',
 					);
-				echo form_dropdown('rank', $options, $cadets['Rank']);?>
+				$info = 'class="form-control" style="width: 120px;"';
+				echo form_dropdown('rank', $options, $cadets['Rank'], $info);?>
 			</td>
 			<td>
-				<?php echo form_input('name', $cadets['Name']);?>
+				<?php 
+				$info = 'class="form-control" style="width: 120px;"';
+				echo form_input('name', $cadets['Name'], $info);?>
 			</td>
 			<td>
 				<?php
@@ -43,7 +46,8 @@
 							'Master'		=> 'Master',
 							'Instructor'	=> 'Instructor',
 					);
-				echo form_dropdown('classification', $options,$cadets['Classification']);?>
+				$info = 'class="form-control"style="width: 120px;"';	
+				echo form_dropdown('classification', $options,$cadets['Classification'], $info);?>
 			</td>
 			<?php 
 				$result = $this->db_model->get_achieved_specific($cadets['Name']);
@@ -71,10 +75,11 @@
 					{
 						$colour = $level;
 					}
+					$info = 'class="form-control" style="width: 120px;"';
 					echo '<td style="background-color:'.$colour.';">';
-						echo form_input('date_'.html_escape($i).'', $badge_achieved['Date']);
+						echo form_input('date_'.html_escape($i).'', $badge_achieved['Date'], $info);
 						echo '<br>';
-						echo form_dropdown('level_'.html_escape($i).'', $options, $level);
+						echo form_dropdown('level_'.html_escape($i).'', $options, $level, $info);
 					echo '</td>';
 					$i++;
 				endforeach;
