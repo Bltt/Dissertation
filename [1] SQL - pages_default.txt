@@ -1,0 +1,15 @@
+CREATE TABLE pages_default (
+    PageName text NOT NULL,
+    Content text NOT NULL
+);
+
+INSERT INTO pages_default VALUES ('about', 'about');
+INSERT INTO pages_default VALUES ('civcomm', 'about');
+INSERT INTO pages_default VALUES ('contact', 'about');
+INSERT INTO pages_default VALUES ('gallery', 'about');
+INSERT INTO pages_default VALUES ('giving', 'about');
+INSERT INTO pages_default VALUES ('home', 'about');
+INSERT INTO pages_default VALUES ('join', 'about');
+INSERT INTO pages_default VALUES ('public', 'about');
+INSERT INTO pages_default VALUES ('staffteam', 'about');
+INSERT INTO pages_default VALUES ('whatwedo', 'about');

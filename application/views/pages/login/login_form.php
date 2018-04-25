@@ -49,18 +49,21 @@ if( ! isset( $on_hold_message ) )
 ?>
 
 	<div>
-
-		<label for="login_string" class="form_label">Username</label>
-		<input type="text" name="login_string" id="login_string" class="form_input" autocomplete="off" maxlength="255" />
-
+		<form class="form-horizontal" action="#">
+		<div class="form-group">
+			<label for="login_string" class="control-label col-sm-2">Username</label>
+			<input type="text" name="login_string" id="login_string" class="form_input form-control" autocomplete="off" maxlength="255" />
+		</div>
+		
 		<br />
-
-		<label for="login_pass" class="form_label">Password</label>
-		<input type="password" name="login_pass" id="login_pass" class="form_input password" <?php 
-			if( config_item('max_chars_for_password') > 0 )
-				echo 'maxlength="' . config_item('max_chars_for_password') . '"'; 
-		?> autocomplete="off" readonly="readonly" onfocus="this.removeAttribute('readonly');" />
-
+		
+		<div class="form-group">
+			<label for="login_pass" class="control-label col-sm-2">Password</label>
+			<input type="password" name="login_pass" id="login_pass" class="form_input password form-control" <?php 
+				if( config_item('max_chars_for_password') > 0 )
+					echo 'maxlength="' . config_item('max_chars_for_password') . '"'; 
+			?> autocomplete="off" readonly="readonly" onfocus="this.removeAttribute('readonly');" />
+		</div>
 
 		<?php
 			if( config_item('allow_remember_me') )

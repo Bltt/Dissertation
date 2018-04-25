@@ -1,3 +1,9 @@
+CREATE TABLE pages (
+    PageName text NOT NULL,
+    Content text NOT NULL
+);
+
+
 INSERT INTO pages VALUES ('about', 'about');
 INSERT INTO pages VALUES ('civcomm', 'about');
 INSERT INTO pages VALUES ('contact', 'about');

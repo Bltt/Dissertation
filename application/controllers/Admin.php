@@ -281,6 +281,37 @@ class Admin extends MY_Controller {
 		}
 	}
 	
+	public function editsitedefault()
+	{
+		if( $this->require_min_level(6) )
+		{
+			$this->load->helper('form');
+			$this->load->library('form_validation');
+			
+			$data['db'] = $this->db_model->get_siteoptions();
+			$data['result'] = '';
+			
+			$this->form_validation->set_rules('page', 'Page', 'required');
+	
+			if ($this->form_validation->run() === FALSE)
+			{
+				$data['db'] = $this->db_model->get_siteoptions();
+				$this->load->view('templates/private/header');
+				$this->load->view('pages/private/editsitedefault', $data);
+				$this->load->view('templates/private/footer');
+			}
+			else
+			{
+				$data['result'] = $this->db_model->set_sitedefault();
+				
+				$data['db'] = $this->db_model->get_siteoptions();
+				$this->load->view('templates/private/header');
+				$this->load->view('pages/private/editsitedefault', $data);
+				$this->load->view('templates/private/footer');
+			}
+		}
+	}
+	
 	public function editpage()
 	{
 		$this->load->helper('form');
@@ -290,6 +321,7 @@ class Admin extends MY_Controller {
 		$this->form_validation->set_rules('contenteditor', 'ContentEditor', 'required');
 		
 		$name = $this->session->flashdata('name');
+		$data['result'] = '';
 		
 		$sql = 'SELECT Content FROM pages WHERE PageName='.$this->db->escape($name).';';
 		$query = $this->db->query($sql);
@@ -327,7 +359,6 @@ class Admin extends MY_Controller {
 			$data['result'] = $result;
 			$this->load->view('templates/private/header');
 			$this->load->view('pages/private/editpage', $data);
-			echo $result;
 			$this->load->view('templates/private/footer');
 		}
 	}

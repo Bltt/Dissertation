@@ -53,6 +53,7 @@ $route['default_controller'] = 'pages/view';
 $route['upload/upload'] = 'upload/upload';
 $route['upload/(:any)'] = 'admin/view/$1';
 $route['admin/editsite'] = 'admin/editsite';
+$route['admin/editsitedefault'] = 'admin/editsitedefault';
 $route['admin/editpage'] = 'admin/editpage';
 $route['admin/progtracker'] = 'admin/progtracker';
 $route['admin/progtrack_edit'] = 'admin/progtrack_edit';

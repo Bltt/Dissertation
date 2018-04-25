@@ -29,4 +29,5 @@
 			</div>
 		</div>
 	</form>
+	<?php echo $result; ?>
 </div>

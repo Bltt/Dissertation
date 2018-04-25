@@ -94,6 +94,28 @@ class Db_model extends CI_Model {
 		return $query->result_array();
 	}
 	
+	public function set_sitedefault()
+	{
+		$page = $this->input->post('page');
+		
+		$sql = 'SELECT Content FROM pages_default WHERE PageName='.$this->db->escape($page).';';
+		$query = $this->db->query($sql);
+		$row = $query->row();
+		$content = $row->Content;
+		$result = '';
+		
+		$sql = 'UPDATE pages SET Content='.$this->db->escape($content).' WHERE PageName='.$this->db->escape($page).';';
+		if ($this->db->simple_query($sql)) 
+		{
+			$result = '<div class="alert alert-success" role="alert">Success!</div>';
+		}
+		else
+		{
+			$result = '<div class="alert alert-danger" role="alert">Query failed!</div>';
+		}
+		return $result; 
+	}
+	
 	public function get_pagecontent()
 	{
 		$page = $this->input->post('page');
