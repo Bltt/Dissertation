@@ -404,6 +404,37 @@ class Admin extends MY_Controller {
 		}
 	}
 	
+	public function progcadetdelete()
+	{
+		$this->load->helper('form');
+		$this->load->library('form_validation');
+			
+		$data['db_badge'] = $this->db_model->get_badges();
+		$data['db_cadets'] = $this->db_model->get_cadets();
+		$data['db_achieved'] = $this->db_model->get_achieved();
+		
+		$this->form_validation->set_rules('name', 'Name', 'required');
+		
+		if ($this->form_validation->run() === FALSE)
+		{
+			$this->load->view('templates/private/header_big');
+			$this->load->view('pages/private/prog_cadet_delete', $data);
+			$this->load->view('templates/private/footer');
+		}
+		else
+		{
+			$this->db_model->delete_cadet();
+			
+			$data['db_badge'] = $this->db_model->get_badges();
+			$data['db_cadets'] = $this->db_model->get_cadets();
+			$data['db_achieved'] = $this->db_model->get_achieved();
+			
+			$this->load->view('templates/private/header_big');
+			$this->load->view('pages/private/prog_cadet_delete', $data);
+			$this->load->view('templates/private/footer');
+		}
+	}
+	
 	public function editcadet()
 	{
 		if( $this->require_min_level(3) )

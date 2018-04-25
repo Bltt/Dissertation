@@ -127,6 +127,15 @@ class Db_model extends CI_Model {
 		endforeach;
 	}
 	
+	public function delete_cadet()
+	{
+		$name = $this->input->post('name');
+		
+		$tables = array('progress_cadets', 'progress_achieved');
+		$this->db->where('name', $name);
+		$this->db->delete($tables);
+	}
+	
 	public function edit_cadet()
 	{
 		$name = $this->input->post('name');

@@ -98,6 +98,7 @@
 			
 			<div class="form-group"> 
 				<div class="col-sm-offset-2 col-sm-10">
+					<a href="/admin/progtrack_edit" class="btn btn-primary" role="button">Back</a>
 					<button type="submit" class="btn btn-default">Submit</button>
 				</div>
 			</div>

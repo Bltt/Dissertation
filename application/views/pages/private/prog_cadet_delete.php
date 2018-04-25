@@ -1,13 +1,11 @@
 <div class="container">
     <h1>Progress Tracker</h1>
-	<h3>Select cadet to edit</h3>
+	<h3>Add Cadet</h3>
 </div>
-<div id="container">
-<?php echo form_open('admin/progtrack_edit'); ?>
+<div id="container-fluid" class="row">
     <table class="table table-hover">
 		<thead>
 		<tr>
-			<th>Select</th>
 			<th>Rank</th>
 			<th>Name</th>
 			<th>Classification</th>
@@ -20,9 +18,6 @@
 		</thead>
 		<?php foreach ($db_cadets as $cadets): ?>
 		<tr>
-			<td>
-				<?php echo form_radio('Selector',$cadets['Name']);?>
-			</td>
 			<td>
 				<?php echo $cadets['Rank'];?>
 			</td>
@@ -61,9 +56,28 @@
 		<?php endforeach; ?>
 	</table>
 </div>
-<div class="container">
-	<a href="/admin/progtracker" class="btn btn-primary" role="button">Back</a>
-	<a href="/admin/progcadetadd" class="btn btn-secondary" role="button">Add Cadet</a>
-	<a href="/admin/progcadetdelete" class="btn btn-secondary" role="button">Delete Cadet</a>
-	<button type="submit" class="btn btn-default">Submit</button>
-</div>
+    <?php echo validation_errors(); ?>
+<?php echo form_open('admin/progcadetdelete'); ?>
+<div class="row">
+		<div class="col-lg-10">
+		  <form class="form-horizontal" action="#">
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="name">Name:</label>			
+				<select class="form-control" id="name" name="name">
+				<?php foreach ($db_cadets as $cadets):
+					echo '<option>';
+					echo $cadets['Name'];
+					echo '</option>';
+				endforeach; ?>
+				</select>
+			</div>			
+			
+			<div class="form-group"> 
+				<div class="col-sm-offset-2 col-sm-10">
+					<a href="/admin/progtrack_edit" class="btn btn-primary" role="button">Back</a>
+					<button type="submit" class="btn btn-default">Submit</button>
+				</div>
+			</div>
+		  </form>
+		</div>
+	</div>
