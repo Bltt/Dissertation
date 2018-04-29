@@ -149,6 +149,34 @@ class Db_model extends CI_Model {
 		endforeach;
 	}
 	
+	public function add_badge()
+	{
+		$badge = $this->input->post('badge');
+		
+		$data = array(
+			'Badge_Name'	=> $badge,
+		);
+		$this->db->insert('progress_badges', $data);
+		
+		$cadets = $this->get_cadets();
+		
+		$sql = 'SELECT MAX(Badge_ID) FROM progress_badges LIMIT 1;';
+		$query = $this->db->query($sql);
+		$data_db = $query->result_array();
+		$id = $data_db[0]['MAX(Badge_ID)'];
+		print_r($data_db);
+		
+		foreach($cadets as $cadet):
+			$data_ach = array(
+				'Name' 		=> $cadet['Name'],
+				'Level' 	=> 'Grey',
+				'Date'		=> date("Y-m-d"),
+				'Badge_ID'	=> $id,
+			);
+			$this->db->insert('progress_achieved', $data_ach);		
+		endforeach;
+	}
+	
 	public function delete_cadet()
 	{
 		$name = $this->input->post('name');

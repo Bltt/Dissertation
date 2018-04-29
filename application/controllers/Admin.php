@@ -402,6 +402,33 @@ class Admin extends MY_Controller {
 		}
 	}
 	
+	public function progbadgeadd()
+	{
+		$this->load->helper('form');
+		$this->load->library('form_validation');
+			
+		$data['db_badge'] = $this->db_model->get_badges();
+		
+		$this->form_validation->set_rules('badge', 'Badge', 'required|is_unique[progress_badges.Badge_Name]');
+		
+		if ($this->form_validation->run() === FALSE)
+		{
+			$this->load->view('templates/private/header');
+			$this->load->view('pages/private/prog_badge_add', $data);
+			$this->load->view('templates/private/footer');
+		}
+		else
+		{
+			$this->db_model->add_badge();
+			
+			$data['db_badge'] = $this->db_model->get_badges();
+			
+			$this->load->view('templates/private/header');
+			$this->load->view('pages/private/prog_badge_add', $data);
+			$this->load->view('templates/private/footer');
+		}
+	}
+	
 	public function progcadetadd()
 	{
 		$this->load->helper('form');

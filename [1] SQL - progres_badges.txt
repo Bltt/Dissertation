@@ -1,43 +1,20 @@
-trained shot
-marksman
-adv marksman
-comp marksman
-
-leadership
-
-gliding
-
-DofE
-
-musician
-
-first aid
-
-Road Marching
-
-Parachuting
-
-Comms
-Cyber
+CREATE TABLE progress_badges (
+    Badge_ID int(11) NOT NULL AUTO_INCREMENT,
+    Content text NOT NULL,
+	PRIMARY KEY (Cadet_ID)
+);
 
 INSERT INTO progress_badges VALUES ('1', 'Trained Shot');
 INSERT INTO progress_badges VALUES ('2', 'Marksman');
 INSERT INTO progress_badges VALUES ('3', 'Advanced Marksman');
 INSERT INTO progress_badges VALUES ('4', 'Competition Marksman');
-
 INSERT INTO progress_badges VALUES ('5', 'Leadership');
-
 INSERT INTO progress_badges VALUES ('6', 'Gliding');
 INSERT INTO progress_badges VALUES ('7', 'Flying');
-
 INSERT INTO progress_badges VALUES ('8', 'DofE');
-
 INSERT INTO progress_badges VALUES ('9', 'Music');
-
 INSERT INTO progress_badges VALUES ('10', 'First Aid');
-
 INSERT INTO progress_badges VALUES ('11', 'Road Marching');
-
 INSERT INTO progress_badges VALUES ('12', 'Comms');
 INSERT INTO progress_badges VALUES ('13', 'Cyber');
 

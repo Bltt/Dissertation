@@ -65,5 +65,7 @@
 	<a href="/admin/progtracker" class="btn btn-primary" role="button">Back</a>
 	<a href="/admin/progcadetadd" class="btn btn-secondary" role="button">Add Cadet</a>
 	<a href="/admin/progcadetdelete" class="btn btn-secondary" role="button">Delete Cadet</a>
+	<a href="/admin/progbadgeadd" class="btn btn-secondary" role="button">Add Badge</a>
+	<a href="/admin/progbadgedelete" class="btn btn-secondary" role="button">Delete Badge</a>
 	<button type="submit" class="btn btn-default">Submit</button>
 </div>
