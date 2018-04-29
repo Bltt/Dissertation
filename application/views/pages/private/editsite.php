@@ -27,7 +27,8 @@
 		<div class="form-group"> 
 			<div class="col-sm-offset-2 col-sm-10">
 				<a href="/admin/editsitedefault" class="btn btn-primary" role="button">Revert page to default</a>
-				<button type="submit" class="btn btn-default">Submit</button>
+				<a href="/admin/upload" class="btn btn-primary" role="button">Upload Image</a>
+				<button type="submit" class="btn btn-default">Select</button>
 			</div>
 		</div>
 	</form>

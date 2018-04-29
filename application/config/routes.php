@@ -50,8 +50,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 $route['default_controller'] = 'pages/view';
-$route['upload/upload'] = 'upload/upload';
-$route['upload/(:any)'] = 'admin/view/$1';
 $route['admin/editsite'] = 'admin/editsite';
 $route['admin/editsitedefault'] = 'admin/editsitedefault';
 $route['admin/editpage'] = 'admin/editpage';
@@ -68,6 +66,7 @@ $route['admin/logout'] = 'admin/logout';
 $route['admin/users'] = 'admin/users';
 $route['admin/userpass'] = 'admin/userpass';
 $route['admin/userdelete'] = 'admin/userdelete';
+$route['admin/upload'] = 'admin/upload';
 $route['admin/(:any)'] = 'admin/view/$1';
 $route['admin'] = 'admin/view/dash';
 $route[LOGIN_PAGE] = 'pages/login';

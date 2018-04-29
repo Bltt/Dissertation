@@ -1,5 +1,15 @@
 <div id="container">
-    <div id="body">
-        <p>im a paragraph lol</p>
+    <div class="row align-items-center">
+        <div class="col-6">
+		blah something
+		</div>
+		<div class="col-6">
+			<div class="row">
+			idk
+			</div>
+			<div class="row">
+			idk
+			</div>
+		</div>		
     </div>
 </div>
