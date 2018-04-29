@@ -28,7 +28,43 @@
 		</div>
 		<div class="col-6">
 		<h3>Latest Badges</h3>
-		ye
+		  <table class="table table-hover">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Date</th>
+					<th>Level</th>
+				</tr>
+			</thead>
+			<?php foreach ($badges_latest as $badges): 
+			if ($badges['Level'] != 'Grey')
+			{
+				$level = $badges['Level'];
+				$colour = '';
+				if($level == 'Bronze')
+				{
+					$colour = 'chocolate';
+				}
+				else
+				{
+					$colour = $level;
+				}
+				
+				
+				echo '<tr>';
+					echo '<td>';
+						echo $badges['Name'];
+					echo '</td>';
+					echo '<td>';
+						echo $badges['Date'];
+					echo '</td>';
+					echo '<td style="background-color:'.$colour.';">';
+						echo $badges['Level'];
+					echo '</td>';
+				echo '</tr>';
+			}
+			endforeach; ?>
+		  </table>
 		</div>
 	</div>
 	

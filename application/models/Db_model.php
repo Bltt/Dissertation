@@ -238,10 +238,10 @@ class Db_model extends CI_Model {
 	
 	public function get_latest_badges()
 	{
-		/* $sql = 'SELECT * FROM progress_achieved WHERE PageName='.$this->db->escape($page).';';
+		 $sql = 'SELECT * FROM progress_achieved WHERE Date >= curdate() - INTERVAL DAYOFWEEK(curdate())+6 DAY AND date < curdate() - INTERVAL DAYOFWEEK(curdate())-1 DAY;';
 		
 		$query = $this->db->query($sql);
-		return $query->result_array();*/
+		return $query->result_array();
 	}
 
 }
