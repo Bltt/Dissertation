@@ -429,6 +429,33 @@ class Admin extends MY_Controller {
 		}
 	}
 	
+	public function progbadgedelete()
+	{
+		$this->load->helper('form');
+		$this->load->library('form_validation');
+			
+		$data['db_badge'] = $this->db_model->get_badges();
+		
+		$this->form_validation->set_rules('badge', 'Badge', 'required');
+		
+		if ($this->form_validation->run() === FALSE)
+		{
+			$this->load->view('templates/private/header_big');
+			$this->load->view('pages/private/prog_badge_delete', $data);
+			$this->load->view('templates/private/footer');
+		}
+		else
+		{
+			$this->db_model->delete_badge();
+			
+			$data['db_badge'] = $this->db_model->get_badges();
+			
+			$this->load->view('templates/private/header_big');
+			$this->load->view('pages/private/prog_badge_delete', $data);
+			$this->load->view('templates/private/footer');
+		}
+	}
+	
 	public function progcadetadd()
 	{
 		$this->load->helper('form');

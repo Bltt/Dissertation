@@ -164,7 +164,6 @@ class Db_model extends CI_Model {
 		$query = $this->db->query($sql);
 		$data_db = $query->result_array();
 		$id = $data_db[0]['MAX(Badge_ID)'];
-		print_r($data_db);
 		
 		foreach($cadets as $cadet):
 			$data_ach = array(
@@ -175,6 +174,21 @@ class Db_model extends CI_Model {
 			);
 			$this->db->insert('progress_achieved', $data_ach);		
 		endforeach;
+	}
+	
+		public function delete_badge()
+	{
+		$badge = $this->input->post('badge');
+		$sql = 'SELECT Badge_ID FROM progress_badges WHERE Badge_Name='.$this->db->escape($badge).';';
+		$query = $this->db->query($sql);
+		$data_db = $query->result_array();
+		$id = $data_db[0]['Badge_ID'];
+			
+		$this->db->where('Badge_Name', $badge);
+		$this->db->delete('progress_badges');
+		
+		$this->db->where('Badge_ID', $id);
+		$this->db->delete('progress_achieved');
 	}
 	
 	public function delete_cadet()
