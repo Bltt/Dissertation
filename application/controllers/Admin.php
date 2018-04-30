@@ -567,9 +567,9 @@ class Admin extends MY_Controller {
     {
                 $config['upload_path']          = './assets/images/uploads/';
                 $config['allowed_types']        = 'jpg|png';
-                $config['max_size']             = 100;
-                $config['max_width']            = 1024;
-                $config['max_height']           = 768;
+                $config['max_size']             = 0;
+                $config['max_width']            = 2000;
+                $config['max_height']           = 2000;
 
                 $this->load->library('upload', $config);
 
