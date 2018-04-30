@@ -22,35 +22,35 @@
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="home">Home</a>
+                    <a class="nav-link" href="/home">Home</a>
                 </li>
 				<li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       About
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-						<a class="dropdown-item" href="about">About Us</a>
-                        <a class="dropdown-item" href="whatwedo">What We Do</a>
-						<a class="dropdown-item" href="staffteam">Staff Team</a>
-						<a class="dropdown-item" href="civcomm">Civilian Committee</a>
+						<a class="dropdown-item" href="/about">About Us</a>
+                        <a class="dropdown-item" href="/whatwedo">What We Do</a>
+						<a class="dropdown-item" href="/staffteam">Staff Team</a>
+						<a class="dropdown-item" href="/civcomm">Civilian Committee</a>
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-item nav-link" href="contact">Contact Us</a>
+                    <a class="nav-item nav-link" href="/contact">Contact Us</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-item nav-link" href="join">Join Us</a>
+                    <a class="nav-item nav-link" href="/join">Join Us</a>
                 </li>
 				<li>
-					<a class="nav-item nav-link" href="giving">Giving</a>
+					<a class="nav-item nav-link" href="/giving">Giving</a>
 				</li>
 				<li>
-					<a class="nav-item nav-link" href="gallery">Gallery</a>
+					<a class="nav-item nav-link" href="/gallery">Gallery</a>
 				</li>
             </ul>
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-item nav-link" href="leave">Submit Leave</a>
+                    <a class="nav-item nav-link" href="/leave">Submit Leave</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-item nav-link" href="/admin/dash">Login</a>

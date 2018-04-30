@@ -70,5 +70,7 @@ $route['admin/upload'] = 'admin/upload';
 $route['admin/(:any)'] = 'admin/view/$1';
 $route['admin'] = 'admin/view/dash';
 $route[LOGIN_PAGE] = 'pages/login';
+$route['contact'] = 'pages/contact';
+$route['join'] = 'pages/join';
 $route['(:any)'] = 'pages/view/$1';
 
