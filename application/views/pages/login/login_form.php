@@ -83,16 +83,38 @@ if( ! isset( $on_hold_message ) )
 			<?php
 				$link_protocol = USE_SSL ? 'https' : NULL;
 			?>
-			<a href="<?php echo site_url('examples/recover', $link_protocol); ?>">
-				Can't access your account?
-			</a>
+			
+			
+			<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#forgotpassmodal">
+				Forgot Password?
+			</button>
 		</p>
 
-
-		<input type="submit" name="submit" value="Login" id="submit_button"  />
-
+		<div class="float-right">
+			<input type="submit" name="submit" class="btn btn-primary" value="Login" id="submit_button"  />
+		</div>
 	</div>
 </form>
+
+		<!-- Modal -->
+<div class="modal fade" id="forgotpassmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Forgot username or password?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Please contact officer commanding 561 Squadron who can reset your account appropriately through the user account system.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <?php
 
